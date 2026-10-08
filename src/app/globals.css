@@ -1,0 +1,245 @@
+@import "tailwindcss";
+
+@theme {
+  --font-pixel: "Galmuri11", "Galmuri9", "DotGothic16", monospace;
+  --color-ink: #35507a;
+  --color-paper: #f3dfa2;
+}
+
+:root {
+  --ink: #3a2a4d;
+  --panel: #4a86d6;
+  --panel-hi: #6aa3e8;
+  --line: #cdeeff;
+  --gold: #fde047;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background: linear-gradient(#9ddcff, #d9f3ff);
+  color: #fff;
+  font-family: var(--font-pixel);
+  overflow: hidden;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ---------- pixel UI ---------- */
+
+.px-box {
+  position: relative;
+  background: var(--bg, var(--panel));
+  color: var(--fg, #fff);
+  border-radius: 18px;
+  border: 3px solid var(--bd, #fff1cf);
+  box-shadow:
+    0 0 0 2px var(--bd2, #e8a556),
+    0 6px 0 0 rgba(90, 55, 30, 0.35),
+    0 10px 22px rgba(40, 25, 70, 0.35),
+    inset 0 3px 0 0 var(--hi, rgba(255, 255, 255, 0.28));
+}
+
+/* メイプル風のぷっくりボタン */
+.px-btn {
+  --bg: #ffc94d;
+  --fg: #5a3416;
+  padding: 7px 16px;
+  border: 2px solid #fff7dc;
+  border-radius: 999px;
+  background: linear-gradient(#ffe38a, var(--bg) 55%, #f5a623);
+  color: var(--fg);
+  font-size: 13px;
+  line-height: 1.2;
+  box-shadow:
+    0 0 0 2px #c9822c,
+    0 4px 0 2px #a9671f,
+    0 7px 10px rgba(60, 35, 15, 0.3);
+  transition:
+    transform 0.12s ease-out,
+    filter 0.12s;
+}
+.px-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+  filter: brightness(1.06);
+}
+.px-btn:active {
+  transform: translateY(3px);
+  box-shadow:
+    0 0 0 2px #c9822c,
+    0 1px 0 2px #a9671f;
+}
+.px-btn.ghost {
+  --fg: #fff;
+  border-color: #e6ecff;
+  background: linear-gradient(#8a9be0, #6578c9 55%, #4d5db0);
+  box-shadow:
+    0 0 0 2px #38458f,
+    0 4px 0 2px #2c3772,
+    0 7px 10px rgba(30, 30, 80, 0.3);
+}
+.px-btn.red {
+  --fg: #fff;
+  border-color: #ffe4e4;
+  background: linear-gradient(#ff9a9a, #f06464 55%, #d94444);
+  box-shadow:
+    0 0 0 2px #a52c2c,
+    0 4px 0 2px #842020,
+    0 7px 10px rgba(80, 20, 20, 0.3);
+}
+
+/* キーボードのキーキャップ表示 */
+.keycap {
+  display: inline-block;
+  min-width: 22px;
+  padding: 1px 6px 2px;
+  border-radius: 7px;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 2px 0 rgba(255, 255, 255, 0.55);
+  color: #fff;
+  font-family: inherit;
+  font-size: 11px;
+  text-align: center;
+}
+
+/* HUD などに使うクリーム色の小パネル */
+.mp-pill {
+  --bg: #fff6df;
+  --fg: #6b3f1d;
+  --bd: #ffffff;
+  --bd2: #f0a850;
+}
+
+.blink {
+  animation: blink 1s steps(2, jump-none) infinite;
+}
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.pixelated {
+  image-rendering: pixelated;
+}
+
+.wood {
+  background-color: #a56d3d;
+  background-image:
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.08) 0 2px, transparent 2px 24px),
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.1) 0 2px, transparent 2px 10px);
+}
+
+.parchment {
+  background-color: #f3dfa2;
+  background-image:
+    radial-gradient(rgba(139, 94, 30, 0.14) 1px, transparent 1.5px),
+    radial-gradient(rgba(139, 94, 30, 0.1) 1px, transparent 1.5px);
+  background-size: 6px 6px, 10px 10px;
+  background-position: 0 0, 3px 4px;
+}
+
+/* ---------- misc ---------- */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #fbbf24;
+  border: 2px solid #35507a;
+}
+::-webkit-scrollbar-track {
+  background: #35507a;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blink {
+    animation: none;
+  }
+  .px-btn,
+  .pxl-btn {
+    transition: none;
+  }
+}
+
+/* ---------- 도트 HUD (각진 계단형 테두리, 둥근 모서리 없음) ---------- */
+.pxl-box {
+  --bg: #fff6df;
+  --bd: #6b4430;
+  position: relative;
+  background: var(--bg);
+  color: #6b4430;
+  border: 0;
+  border-radius: 0;
+  box-shadow:
+    0 -4px 0 0 var(--bd),
+    0 4px 0 0 var(--bd),
+    -4px 0 0 0 var(--bd),
+    4px 0 0 0 var(--bd),
+    inset 0 4px 0 0 #ffffff,
+    inset 0 -4px 0 0 #e8cf9e;
+}
+.pxl-gold {
+  --bg: #ffc94d;
+  box-shadow:
+    0 -4px 0 0 var(--bd),
+    0 4px 0 0 var(--bd),
+    -4px 0 0 0 var(--bd),
+    4px 0 0 0 var(--bd),
+    inset 0 4px 0 0 #ffe9a0,
+    inset 0 -4px 0 0 #e09a1f;
+}
+.pxl-btn {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: #5b6bd6;
+  color: #fff;
+  box-shadow:
+    0 -4px 0 0 #1b1f4a,
+    0 4px 0 0 #1b1f4a,
+    -4px 0 0 0 #1b1f4a,
+    4px 0 0 0 #1b1f4a,
+    inset 0 4px 0 0 #8c99f0,
+    inset 0 -4px 0 0 #3a47a8;
+  transition: transform 0.06s steps(2);
+}
+.pxl-btn:hover {
+  filter: brightness(1.12);
+}
+.pxl-btn:active {
+  transform: translateY(4px);
+  box-shadow:
+    0 -4px 0 0 #1b1f4a,
+    0 0 0 0 #1b1f4a,
+    -4px 0 0 0 #1b1f4a,
+    4px 0 0 0 #1b1f4a,
+    inset 0 4px 0 0 #3a47a8;
+}
+.pxl-bar {
+  background: #3a2a1a;
+  padding: 2px;
+  box-shadow:
+    0 -2px 0 0 #6b4430,
+    0 2px 0 0 #6b4430,
+    -2px 0 0 0 #6b4430,
+    2px 0 0 0 #6b4430;
+}
+.pxl-bar-fill {
+  background: repeating-linear-gradient(90deg, #8fe86f 0 6px, #5fcf4f 6px 8px);
+}
