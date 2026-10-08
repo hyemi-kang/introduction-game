@@ -85,15 +85,11 @@ export default function GameRoot() {
     sfxRef.current = sfx;
     setTouch(window.matchMedia("(pointer: coarse)").matches);
 
-    // ピクセルフォント(Galmuri)は描画をブロックしないよう JS から後読みする。
-    // CDN に届かない環境でも、ページとゲームはフォントなしで動く。
-    if (!document.getElementById("galmuri-css")) {
-      const link = document.createElement("link");
-      link.id = "galmuri-css";
-      link.rel = "stylesheet";
-      link.href = "https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css";
-      document.head.appendChild(link);
-    }
+    // ピクセルフォント(Galmuri, /public/fonts に自前配置)。待たずに読み込みだけ開始する。
+    // Galmuri9 は canvas でしか使われず、読み込みが自動では始まらないためここで明示する。
+    // 届いたら下の loadingdone で看板などの文字を描き直す。
+    void document.fonts.load('8px "Galmuri9"').catch(() => undefined);
+    void document.fonts.load('16px "Galmuri11"').catch(() => undefined);
 
     (async () => {
       // フォントは待たずに即開始（届いたら下で文字だけ描き直す）

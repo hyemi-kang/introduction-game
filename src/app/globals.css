@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+/* 도트 폰트 Galmuri (SIL OFL 1.1, v2.40.3). 자체 호스팅 — 라이선스는 public/fonts/OFL-Galmuri.md */
+@font-face {
+  font-family: "Galmuri9";
+  src: url("/fonts/Galmuri9.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Galmuri11";
+  src: url("/fonts/Galmuri11.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme {
   --font-pixel: "Galmuri11", "Galmuri9", "DotGothic16", monospace;
   --color-ink: #35507a;

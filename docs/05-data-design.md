@@ -129,7 +129,7 @@ interface Shot {
 |---|---|
 | 이미지 | 없음 (스프라이트·배경은 코드로 그림). 퀘스트 스크린샷만 `public/quests/` 에 **선택적으로** 추가 |
 | 음원 | 없음 (Web Audio로 합성) |
-| 폰트 | Galmuri를 CDN에서 후행 로드 (실패 시 monospace) |
+| 폰트 | `public/fonts/Galmuri9.woff2`, `Galmuri11.woff2` (+ 라이선스 `OFL-Galmuri.md`). `globals.css` 의 `@font-face` 로 참조 |
 | 아이콘(UI) | `PixelArt` 컴포넌트가 문자 그리드로 SVG 생성 (하트·코인·벌레·폭탄·스피커 등) |
 
 ## 6. 변경 시 영향 범위
